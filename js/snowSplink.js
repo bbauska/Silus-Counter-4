@@ -26,7 +26,7 @@ const period = [
 ];
 
 /* Emojis to substitute for snowflakes, just for fun */
-const fun = ['❤️', '😻', '🥩', '🐔', '💘'];
+const fun = ['🥕', '😻', '🥩', '🐔', '💡', '🐰', '🐭', '🦊', '🐻', '🦅', '🍺', '🥵', '🤡', '💀', '🤩'];
 
 /* The CSS styles for the snowflakes and container */
 const cssString = `.snowfall-container {
@@ -71,27 +71,27 @@ function ready(fn) {
 
 /* Reset a flake to newly randomized values */
 function resetFlake(flake) {
-    /* X-axis is in vw CSS units */
-    let x = flake.dataset.origX = (Math.random() * 100);
+  /* X-axis is in vw CSS units */
+  let x = flake.dataset.origX = (Math.random() * 100);
 
-    /* Y-axis is in CSS vh units */
-    let y = flake.dataset.origY = 0;
+  /* Y-axis is in CSS vh units */
+  let y = flake.dataset.origY = 0;
 
-    /* Once in awhile, have closer snowflakes */
-    /* Z-axis is in CSS px units */
-    let z = flake.dataset.origZ = (Math.random() < 0.1) ? (Math.ceil(Math.random() * 100) + 25) : 0;
-    let life = flake.dataset.life = (Math.ceil(Math.random() * 4000) + 6000); //Milliseconds
-    flake.dataset.origLife = life; //Timestamps for flake creation
-    flake.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px)`;
-    flake.style.opacity = 1.0;
+  /* Once in awhile, have closer snowflakes */
+  /* Z-axis is in CSS px units */
+  let z = flake.dataset.origZ = (Math.random() < 0.1) ? (Math.ceil(Math.random() * 100) + 25) : 0;
+  let life = flake.dataset.life = (Math.ceil(Math.random() * 4000) + 6000); //Milliseconds
+  flake.dataset.origLife = life; //Timestamps for flake creation
+  flake.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px)`;
+  flake.style.opacity = 1.0;
 
-    /* This is the index into the period function array */
-    flake.dataset.periodFunction = Math.floor(Math.random() * period.length);
+  /* This is the index into the period function array */
+  flake.dataset.periodFunction = Math.floor(Math.random() * period.length);
 
-    if (Math.random() < 0.001) {
-      /* Very small chance of some fun happening */
-      flake.innerText = fun[Math.floor(Math.random() * fun.length)];
-    }
+  if (Math.random() < 0.001) {
+    /* Very small chance of some fun happening */
+    flake.innerText = fun[Math.floor(Math.random() * fun.length)];
+  }
 }
 
 /* Move all the snowflakes */
